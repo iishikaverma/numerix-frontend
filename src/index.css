@@ -2,10 +2,131 @@
 
 :root {
   font-family: Inter, system-ui, sans-serif;
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+  background: #020617;
+}
+
+/* =========================================
+   NUMERIX MATHEMATICAL CURSOR
+   ========================================= */
+
+.math-particle {
+  position: fixed;
+
+  transform:
+    translate(-50%, -50%)
+    scale(0.4)
+    rotate(0deg);
+
+  font-weight: 600;
+
+  pointer-events: none;
+
+  text-shadow:
+    0 0 8px currentColor,
+    0 0 18px currentColor;
+
+  opacity: 0;
+
+  animation: mathParticle 1.1s cubic-bezier(0.16, 1, 0.3, 1)
+    forwards;
+}
+
+@keyframes mathParticle {
+  0% {
+    opacity: 0;
+    transform:
+      translate(-50%, -50%)
+      scale(0.4)
+      rotate(0deg);
+  }
+
+  15% {
+    opacity: 1;
+  }
+
+  45% {
+    opacity: 0.9;
+  }
+
+  100% {
+    opacity: 0;
+    transform:
+      translate(
+        calc(-50% + var(--move-x)),
+        calc(-50% + var(--move-y))
+      )
+      scale(1)
+      rotate(var(--rotation));
+  }
+}
+
+/* Small geometric particles */
+
+.math-shape {
+  position: fixed;
+
+  width: 5px;
+  height: 5px;
+
+  border-radius: 1px;
+
+  pointer-events: none;
+
+  opacity: 0;
+
+  box-shadow:
+    0 0 6px currentColor,
+    0 0 12px currentColor;
+
+  animation: mathShape 0.9s ease-out forwards;
+}
+
+@keyframes mathShape {
+  0% {
+    opacity: 0;
+    transform:
+      translate(-50%, -50%)
+      scale(0)
+      rotate(0deg);
+  }
+
+  20% {
+    opacity: 0.9;
+  }
+
+  100% {
+    opacity: 0;
+    transform:
+      translate(
+        calc(-50% + var(--move-x)),
+        calc(-50% + var(--move-y))
+      )
+      scale(1)
+      rotate(var(--rotation));
+  }
+}
+
+/* Respect reduced motion preferences */
+
+@media (prefers-reduced-motion: reduce) {
+  .math-particle,
+  .math-shape {
+    animation: none;
+    display: none;
+  }
 }
