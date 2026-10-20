@@ -3,43 +3,43 @@ import MethodCard from "../methods/MethodCard";
 const methods = [
   {
     number: "01",
-    title: "Bisection Method",
+    name: "Bisection Method",
+    category: "Root Finding",
     description:
       "Find a root by repeatedly dividing an interval into two halves and narrowing down the solution.",
-    formula: "c = (a + b) / 2",
-    accent: "bg-cyan-400",
+    path: "/methods/bisection",
   },
   {
     number: "02",
-    title: "Secant Method",
+    name: "Secant Method",
+    category: "Root Finding",
     description:
       "Approximate the root using secant lines without requiring the derivative of the function.",
-    formula: "xₙ₊₁ = xₙ − f(xₙ)(xₙ−xₙ₋₁)/(f(xₙ)−f(xₙ₋₁))",
-    accent: "bg-purple-400",
+    path: "/methods/secant",
   },
   {
     number: "03",
-    title: "Newton-Raphson",
+    name: "Newton-Raphson",
+    category: "Root Finding",
     description:
       "Use the function and its derivative to rapidly converge toward a root.",
-    formula: "xₙ₊₁ = xₙ − f(xₙ)/f′(xₙ)",
-    accent: "bg-blue-400",
+    path: "/methods/newton",
   },
   {
     number: "04",
-    title: "Lagrange Interpolation",
+    name: "Lagrange Interpolation",
+    category: "Interpolation",
     description:
       "Estimate unknown values by constructing an interpolation polynomial from known data points.",
-    formula: "P(x) = Σ yᵢLᵢ(x)",
-    accent: "bg-emerald-400",
+    path: "/methods/lagrange",
   },
   {
     number: "05",
-    title: "Newton's Divided Differences",
+    name: "Newton's Divided Differences",
+    category: "Interpolation",
     description:
       "Build an interpolation polynomial using divided differences from a set of data points.",
-    formula: "P(x) = f[x₀] + f[x₀,x₁](x−x₀) + ...",
-    accent: "bg-amber-400",
+    path: "/methods/divided-difference",
   },
 ];
 
@@ -67,7 +67,7 @@ function MethodPreview() {
 
           <p className="mt-5 text-slate-400">
             Explore classical numerical methods through calculations,
-            iterations, tables, and visualizations.
+            iterations, and detailed result tables.
           </p>
         </div>
 
@@ -76,7 +76,11 @@ function MethodPreview() {
           {methods.map((method) => (
             <MethodCard
               key={method.number}
-              {...method}
+              number={method.number}
+              name={method.name}
+              category={method.category}
+              description={method.description}
+              path={method.path}
             />
           ))}
         </div>
