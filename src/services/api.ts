@@ -113,3 +113,59 @@ export async function solveSecant(
 
   return response.json();
 }
+
+export interface NewtonRequest {
+  expression: string;
+  initialGuess: number;
+  tolerance: number;
+}
+
+export interface NewtonIteration {
+  iteration: number;
+  x: number;
+  fx: number;
+  derivative: number;
+  nextX: number;
+  error: number;
+}
+
+export interface NewtonResponse {
+  root: number;
+  error: number;
+  iterations: number;
+  converged: boolean;
+  steps: NewtonIteration[];
+}
+
+export async function solveNewton(
+  request: NewtonRequest
+): Promise<NewtonResponse> {
+  const response = await fetch(
+    `${API_BASE_URL}/api/solve/newton`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(request),
+    }
+  );
+
+  if (!response.ok) {
+    let message = "Failed to solve the problem.";
+
+    try {
+      const errorData = await response.json();
+
+      if (errorData.error) {
+        message = errorData.error;
+      }
+    } catch {
+      // Keep default error message.
+    }
+
+    throw new Error(message);
+  }
+
+  return response.json();
+}
