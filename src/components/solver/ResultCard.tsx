@@ -20,9 +20,9 @@ function ResultCard({
             Numerical Result
           </p>
 
-          <p className="mt-2 text-4xl font-bold text-white">
-            {root}
-          </p>
+            <p className="mt-2 break-all text-4xl font-bold text-cyan-400 sm:text-5xl">
+                {root}
+            </p>
 
           <p className="mt-1 text-sm text-slate-500">
             Approximate root

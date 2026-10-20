@@ -1,11 +1,4 @@
-interface BisectionIteration {
-  iteration: number;
-  a: number;
-  b: number;
-  c: number;
-  fc: number;
-  error: number;
-}
+import type { BisectionIteration } from "../../services/api";
 
 interface IterationTableProps {
   data: BisectionIteration[];
