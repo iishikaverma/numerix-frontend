@@ -169,3 +169,53 @@ export async function solveNewton(
 
   return response.json();
 }
+
+export interface LagrangeRequest {
+  x: number[];
+  y: number[];
+  targetX: number;
+}
+
+export interface LagrangeStep {
+  index: number;
+  basis: number;
+  contribution: number;
+}
+
+export interface LagrangeResponse {
+  value: number;
+  steps: LagrangeStep[];
+}
+
+export async function solveLagrange(
+  request: LagrangeRequest
+): Promise<LagrangeResponse> {
+  const response = await fetch(
+    `${API_BASE_URL}/api/interpolate/lagrange`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(request),
+    }
+  );
+
+  if (!response.ok) {
+    let message = "Failed to solve the problem.";
+
+    try {
+      const errorData = await response.json();
+
+      if (errorData.error) {
+        message = errorData.error;
+      }
+    } catch {
+      // Keep default error message.
+    }
+
+    throw new Error(message);
+  }
+
+  return response.json();
+}
