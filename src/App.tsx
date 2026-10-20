@@ -1,23 +1,49 @@
-import MathCursor from "./components/effects/MathCursor";
-import Navbar from "./components/layout/Navbar";
-import Footer from "./components/layout/Footer";
-import Hero from "./components/home/Hero";
-import MethodPreview from "./components/home/MethodPreview";
-import HowItWorks from "./components/home/HowItWorks";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import Home from "./pages/Home";
+import Methods from "./pages/Methods";
+import Bisection from "./pages/Bisection";
+import Secant from "./pages/Secant";
+import NewtonRaphson from "./pages/NewtonRaphson";
+import Lagrange from "./pages/Lagrange";
+import DividedDifference from "./pages/DividedDifference";
 
 function App() {
   return (
-    <>
-      <MathCursor />
+    <BrowserRouter>
+      <Routes>
 
-      <main className="min-h-screen bg-slate-950 text-white">
-        <Navbar />
-        <Hero />
-        <MethodPreview />
-        <HowItWorks />
-        <Footer />
-      </main>
-    </>
+        <Route path="/" element={<Home />} />
+
+        <Route path="/methods" element={<Methods />} />
+
+        <Route
+          path="/methods/bisection"
+          element={<Bisection />}
+        />
+
+        <Route
+          path="/methods/secant"
+          element={<Secant />}
+        />
+
+        <Route
+          path="/methods/newton"
+          element={<NewtonRaphson />}
+        />
+
+        <Route
+          path="/methods/lagrange"
+          element={<Lagrange />}
+        />
+
+        <Route
+          path="/methods/divided-difference"
+          element={<DividedDifference />}
+        />
+
+      </Routes>
+    </BrowserRouter>
   );
 }
 
