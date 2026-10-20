@@ -4,13 +4,10 @@ interface IterationTableProps {
   data: BisectionIteration[];
 }
 
-function IterationTable({
-  data,
-}: IterationTableProps) {
+function IterationTable({ data }: IterationTableProps) {
   return (
     <div className="overflow-hidden rounded-2xl border border-white/10 bg-slate-900/60">
-
-      <div className="border-b border-white/10 px-6 py-5">
+      <div className="border-b border-white/10 px-5 py-5 sm:px-6">
         <h2 className="font-semibold text-white">
           Iteration Details
         </h2>
@@ -22,15 +19,16 @@ function IterationTable({
 
       <div className="overflow-x-auto">
         <table className="w-full min-w-[700px] text-sm">
-
           <thead>
             <tr className="border-b border-white/10 text-left text-xs uppercase tracking-wider text-slate-500">
-              <th className="px-6 py-4">Iteration</th>
-              <th className="px-6 py-4">a</th>
-              <th className="px-6 py-4">b</th>
-              <th className="px-6 py-4">c</th>
-              <th className="px-6 py-4">f(c)</th>
-              <th className="px-6 py-4">Error</th>
+              <th className="whitespace-nowrap px-4 py-4 sm:px-6">
+                Iteration
+              </th>
+              <th className="px-4 py-4 sm:px-6">a</th>
+              <th className="px-4 py-4 sm:px-6">b</th>
+              <th className="px-4 py-4 sm:px-6">c</th>
+              <th className="px-4 py-4 sm:px-6">f(c)</th>
+              <th className="px-4 py-4 sm:px-6">Error</th>
             </tr>
           </thead>
 
@@ -40,33 +38,32 @@ function IterationTable({
                 key={row.iteration}
                 className="border-b border-white/5 transition hover:bg-white/[0.02]"
               >
-                <td className="px-6 py-4 font-medium text-cyan-400">
+                <td className="px-4 py-4 font-medium text-cyan-400 sm:px-6">
                   {row.iteration}
                 </td>
 
-                <td className="px-6 py-4 text-slate-300">
+                <td className="px-4 py-4 text-slate-300 sm:px-6">
                   {row.a.toFixed(6)}
                 </td>
 
-                <td className="px-6 py-4 text-slate-300">
+                <td className="px-4 py-4 text-slate-300 sm:px-6">
                   {row.b.toFixed(6)}
                 </td>
 
-                <td className="px-6 py-4 font-medium text-white">
+                <td className="px-4 py-4 font-medium text-white sm:px-6">
                   {row.c.toFixed(6)}
                 </td>
 
-                <td className="px-6 py-4 text-slate-300">
+                <td className="px-4 py-4 text-slate-300 sm:px-6">
                   {row.fc.toFixed(6)}
                 </td>
 
-                <td className="px-6 py-4 text-slate-400">
+                <td className="px-4 py-4 text-slate-400 sm:px-6">
                   {row.error.toFixed(6)}
                 </td>
               </tr>
             ))}
           </tbody>
-
         </table>
       </div>
     </div>
