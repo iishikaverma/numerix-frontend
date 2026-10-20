@@ -1,57 +1,100 @@
+import { Link } from "react-router-dom";
+
 interface MethodCardProps {
   number: string;
-  title: string;
+  name: string;
+  category: string;
   description: string;
-  formula: string;
-  accent: string;
+  path: string;
 }
 
 function MethodCard({
   number,
-  title,
+  name,
+  category,
   description,
-  formula,
-  accent,
+  path,
 }: MethodCardProps) {
   return (
-    <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-slate-900/60 p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-2 hover:border-cyan-400/30 hover:bg-slate-900">
-      
+    <Link
+      to={path}
+      className="
+        group
+        relative
+        overflow-hidden
+        rounded-2xl
+        border
+        border-white/10
+        bg-slate-900/60
+        p-6
+        transition
+        duration-300
+        hover:-translate-y-1
+        hover:border-cyan-400/30
+        hover:bg-slate-900
+        hover:shadow-[0_20px_50px_rgba(0,0,0,0.25)]
+        sm:p-7
+      "
+    >
       {/* Glow */}
+
       <div
-        className={`pointer-events-none absolute -right-20 -top-20 h-40 w-40 rounded-full ${accent} opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-30`}
+        className="
+          pointer-events-none
+          absolute
+          -right-16
+          -top-16
+          h-32
+          w-32
+          rounded-full
+          bg-cyan-400/5
+          blur-3xl
+          transition
+          duration-500
+          group-hover:bg-cyan-400/10
+        "
       />
 
-      {/* Number */}
-      <div className="mb-6 flex items-center justify-between">
-        <span className="text-sm font-medium text-slate-500">
-          {number}
-        </span>
+      <div className="relative">
 
-        <span className="text-xl text-slate-600 transition duration-300 group-hover:text-cyan-400">
-          ↗
-        </span>
+        {/* Top Row */}
+
+        <div className="flex items-start justify-between gap-4">
+
+          <span className="text-sm font-medium tracking-widest text-cyan-400">
+            METHOD {number}
+          </span>
+
+          <span className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-xs text-slate-500">
+            {category}
+          </span>
+
+        </div>
+
+        {/* Name */}
+
+        <h2 className="mt-8 text-2xl font-semibold text-white transition group-hover:text-cyan-50">
+          {name}
+        </h2>
+
+        {/* Description */}
+
+        <p className="mt-3 max-w-xl text-sm leading-6 text-slate-500">
+          {description}
+        </p>
+
+        {/* Action */}
+
+        <div className="mt-7 flex items-center gap-2 text-sm font-medium text-cyan-400">
+          <span>Open Solver</span>
+
+          <span className="transition-transform duration-300 group-hover:translate-x-1">
+            →
+          </span>
+        </div>
+
       </div>
-
-      {/* Title */}
-      <h3 className="text-xl font-semibold text-white">
-        {title}
-      </h3>
-
-      {/* Description */}
-      <p className="mt-3 min-h-[72px] text-sm leading-6 text-slate-400">
-        {description}
-      </p>
-
-      {/* Formula */}
-      <div className="mt-6 rounded-lg border border-white/5 bg-slate-950/70 px-4 py-3">
-        <code className="text-sm text-cyan-300">
-          {formula}
-        </code>
-      </div>
-
-      {/* Bottom line */}
-      <div className="mt-6 h-px w-0 bg-cyan-400 transition-all duration-500 group-hover:w-full" />
-    </div>
+    </Link>
   );
 }
 
