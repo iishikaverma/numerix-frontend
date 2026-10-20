@@ -1,5 +1,6 @@
 import MathCursor from "./components/effects/MathCursor";
 import Navbar from "./components/layout/Navbar";
+import Hero from "./components/home/Hero";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         className="relative min-h-screen overflow-hidden bg-slate-950 text-white"
       >
         <Navbar />
+        <Hero />
 
         <div className="pointer-events-none absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-500/10 blur-[120px]" />
 
