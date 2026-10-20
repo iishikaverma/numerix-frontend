@@ -219,3 +219,47 @@ export async function solveLagrange(
 
   return response.json();
 }
+
+export interface DividedDifferenceRequest {
+  x: number[];
+  y: number[];
+  targetX: number;
+}
+
+export interface DividedDifferenceResponse {
+  value: number;
+  table: number[][];
+}
+
+export async function solveDividedDifference(
+  request: DividedDifferenceRequest
+): Promise<DividedDifferenceResponse> {
+  const response = await fetch(
+    `${API_BASE_URL}/api/interpolate/divided-difference`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(request),
+    }
+  );
+
+  if (!response.ok) {
+    let message = "Failed to solve the problem.";
+
+    try {
+      const errorData = await response.json();
+
+      if (errorData.error) {
+        message = errorData.error;
+      }
+    } catch {
+      // Keep default error message.
+    }
+
+    throw new Error(message);
+  }
+
+  return response.json();
+}
