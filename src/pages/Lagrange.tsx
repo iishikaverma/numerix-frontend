@@ -5,6 +5,7 @@ import Navbar from "../components/layout/Navbar";
 import SolverLayout from "../components/solver/SolverLayout";
 import ParameterInput from "../components/solver/ParameterInput";
 import LagrangeIterationTable from "../components/solver/LagrangeIterationTable";
+import InterpolationResultCard from "../components/solver/InterpolationResultCard";
 
 import {
   solveLagrange,
@@ -382,15 +383,9 @@ function Lagrange() {
         {result && (
           <div className="mt-8 space-y-8">
 
-            <div className="rounded-2xl border border-white/10 bg-slate-900/60 p-6 sm:p-8">
-              <div className="text-sm text-slate-500">
-                Interpolated Value
-              </div>
-
-              <div className="mt-2 text-4xl font-semibold text-cyan-400">
-                {result.value.toFixed(8)}
-              </div>
-            </div>
+            <InterpolationResultCard
+              value={result.value.toFixed(8)}
+            />
 
             <div className="rounded-2xl border border-white/10 bg-slate-900/60 p-6 sm:p-8">
 
