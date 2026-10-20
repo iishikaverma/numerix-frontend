@@ -56,3 +56,60 @@ export async function solveBisection(
 
   return response.json();
 }
+
+export interface SecantRequest {
+  expression: string;
+  x0: number;
+  x1: number;
+  tolerance: number;
+}
+
+export interface SecantIteration {
+  iteration: number;
+  x0: number;
+  x1: number;
+  x2: number;
+  fx2: number;
+  error: number;
+}
+
+export interface SecantResponse {
+  root: number;
+  error: number;
+  iterations: number;
+  converged: boolean;
+  steps: SecantIteration[];
+}
+
+export async function solveSecant(
+  request: SecantRequest
+): Promise<SecantResponse> {
+  const response = await fetch(
+    `${API_BASE_URL}/api/solve/secant`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(request),
+    }
+  );
+
+  if (!response.ok) {
+    let message = "Failed to solve the problem.";
+
+    try {
+      const errorData = await response.json();
+
+      if (errorData.error) {
+        message = errorData.error;
+      }
+    } catch {
+      // Keep default error message.
+    }
+
+    throw new Error(message);
+  }
+
+  return response.json();
+}
