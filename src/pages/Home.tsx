@@ -1,3 +1,6 @@
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+
 import MathCursor from "../components/effects/MathCursor";
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
@@ -6,6 +9,32 @@ import MethodPreview from "../components/home/MethodPreview";
 import HowItWorks from "../components/home/HowItWorks";
 
 function Home() {
+  const location = useLocation();
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const section = params.get("scrollTo");
+
+    if (!section) {
+      return;
+    }
+
+    const scrollToSection = () => {
+      const element = document.getElementById(section);
+
+      if (element) {
+        element.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+    };
+
+    const timer = window.setTimeout(scrollToSection, 100);
+
+    return () => window.clearTimeout(timer);
+  }, [location.search]);
+
   return (
     <>
       <MathCursor />
