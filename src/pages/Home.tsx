@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
-import MathCursor from "../components/effects/MathCursor";
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
 import Hero from "../components/home/Hero";
@@ -37,8 +36,6 @@ function Home() {
 
   return (
     <>
-      <MathCursor />
-
       <main className="min-h-screen bg-slate-950 text-white">
         <Navbar />
 

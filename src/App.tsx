@@ -7,10 +7,12 @@ import Secant from "./pages/Secant";
 import NewtonRaphson from "./pages/NewtonRaphson";
 import Lagrange from "./pages/Lagrange";
 import DividedDifference from "./pages/DividedDifference";
+import MathCursor from "./components/effects/MathCursor";
 
 function App() {
   return (
     <BrowserRouter>
+    <MathCursor />
       <Routes>
 
         <Route path="/" element={<Home />} />
