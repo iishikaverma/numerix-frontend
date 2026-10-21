@@ -48,7 +48,7 @@ function Footer() {
           </div>
 
           {/* Navigation */}
-          <div className="grid grid-cols-2 gap-12 sm:grid-cols-3">
+          <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 sm:gap-12">
 
             <div>
               <h4 className="text-sm font-semibold text-white">
@@ -111,7 +111,7 @@ function Footer() {
               </div>
             </div>
 
-            <div className="hidden sm:block">
+            <div>
               <h4 className="text-sm font-semibold text-white">
                 More
               </h4>

@@ -2,7 +2,7 @@ function Hero() {
   return (
     <section
       id="home"
-      className="relative flex min-h-screen items-center justify-center overflow-hidden px-6 pt-20"
+      className="relative flex min-h-screen items-start justify-center overflow-hidden px-6 pt-28 sm:items-center sm:pt-20"
     >
       {/* Background glow */}
       <div className="pointer-events-none absolute left-1/2 top-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-500/10 blur-[140px]" />
@@ -28,13 +28,13 @@ function Hero() {
       <div className="relative z-10 mx-auto max-w-5xl text-center">
 
         {/* Badge */}
-        <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-cyan-400/20 bg-cyan-400/5 px-4 py-2 text-sm text-cyan-300 backdrop-blur-sm">
+        <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-cyan-400/20 bg-cyan-400/5 px-4 py-2 text-xs text-cyan-300 backdrop-blur-sm sm:mb-8 sm:text-sm">
           <span className="h-2 w-2 animate-pulse rounded-full bg-cyan-400" />
           Interactive Numerical Computing
         </div>
 
         {/* Heading */}
-        <h1 className="text-6xl font-bold tracking-tight sm:text-7xl lg:text-8xl">
+        <h1 className="text-5xl font-bold tracking-tight sm:text-7xl lg:text-8xl">
           Numerical Methods
           <br />
           <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
@@ -43,13 +43,13 @@ function Hero() {
         </h1>
 
         {/* Description */}
-        <p className="mx-auto mt-8 max-w-2xl text-lg leading-8 text-slate-400 sm:text-xl">
+        <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-slate-400 sm:mt-8 sm:text-xl sm:leading-8">
           Solve numerical problems, visualize every iteration, and understand
           how mathematical algorithms actually work.
         </p>
 
         {/* Buttons */}
-        <div className="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
+        <div className="mt-8 flex flex-col justify-center gap-4 sm:mt-10 sm:flex-row">
 
           <a
             href="#methods"
