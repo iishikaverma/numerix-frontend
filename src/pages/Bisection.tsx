@@ -7,6 +7,7 @@ import EquationInput from "../components/solver/EquationInput";
 import ParameterInput from "../components/solver/ParameterInput";
 import ResultCard from "../components/solver/ResultCard";
 import IterationTable from "../components/solver/IterationTable";
+import SlowLoadingHint from "../components/solver/SlowLoadingHint";
 
 import {
   solveBisection,
@@ -152,6 +153,8 @@ function Bisection() {
             >
               {loading ? "Calculating..." : "Solve with Bisection →"}
             </button>
+
+            <SlowLoadingHint loading={loading} />
 
           </div>
         </div>

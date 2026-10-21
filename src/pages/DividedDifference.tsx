@@ -11,6 +11,7 @@ import {
   type DividedDifferenceResponse,
 } from "../services/api";
 import InterpolationResultCard from "../components/solver/InterpolationResultCard";
+import SlowLoadingHint from "../components/solver/SlowLoadingHint";
 
 function DividedDifference() {
   const [xValues, setXValues] = useState([
@@ -365,6 +366,8 @@ function DividedDifference() {
               ? "Calculating..."
               : "Calculate Interpolation →"}
           </button>
+
+          <SlowLoadingHint loading={loading} className="mt-6" />
         </div>
 
         {result && (

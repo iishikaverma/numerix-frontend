@@ -6,6 +6,7 @@ import SolverLayout from "../components/solver/SolverLayout";
 import ParameterInput from "../components/solver/ParameterInput";
 import LagrangeIterationTable from "../components/solver/LagrangeIterationTable";
 import InterpolationResultCard from "../components/solver/InterpolationResultCard";
+import SlowLoadingHint from "../components/solver/SlowLoadingHint";
 
 import {
   solveLagrange,
@@ -375,6 +376,8 @@ function Lagrange() {
               ? "Calculating..."
               : "Calculate Interpolation →"}
           </button>
+
+          <SlowLoadingHint loading={loading} className="mt-6" />
 
         </div>
 

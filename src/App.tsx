@@ -7,6 +7,7 @@ import Secant from "./pages/Secant";
 import NewtonRaphson from "./pages/NewtonRaphson";
 import Lagrange from "./pages/Lagrange";
 import DividedDifference from "./pages/DividedDifference";
+import NotFound from "./pages/NotFound";
 import MathCursor from "./components/effects/MathCursor";
 import Footer from "./components/layout/Footer";
 
@@ -44,6 +45,8 @@ function App() {
           path="/methods/divided-difference"
           element={<DividedDifference />}
         />
+
+        <Route path="*" element={<NotFound />} />
 
       </Routes>
 

@@ -7,6 +7,7 @@ import EquationInput from "../components/solver/EquationInput";
 import ParameterInput from "../components/solver/ParameterInput";
 import ResultCard from "../components/solver/ResultCard";
 import NewtonIterationTable from "../components/solver/NewtonIterationTable";
+import SlowLoadingHint from "../components/solver/SlowLoadingHint";
 
 import {
   solveNewton,
@@ -178,6 +179,8 @@ function NewtonRaphson() {
                 ? "Calculating..."
                 : "Solve with Newton-Raphson →"}
             </button>
+
+            <SlowLoadingHint loading={loading} />
 
           </div>
         </div>

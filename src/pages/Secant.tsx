@@ -7,6 +7,7 @@ import EquationInput from "../components/solver/EquationInput";
 import ParameterInput from "../components/solver/ParameterInput";
 import ResultCard from "../components/solver/ResultCard";
 import SecantIterationTable from "../components/solver/SecantIterationTable";
+import SlowLoadingHint from "../components/solver/SlowLoadingHint";
 
 import {
   solveSecant,
@@ -201,6 +202,8 @@ function Secant() {
                 ? "Calculating..."
                 : "Solve with Secant →"}
             </button>
+
+            <SlowLoadingHint loading={loading} />
 
           </div>
         </div>
