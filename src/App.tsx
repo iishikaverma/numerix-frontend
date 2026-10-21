@@ -8,6 +8,7 @@ import NewtonRaphson from "./pages/NewtonRaphson";
 import Lagrange from "./pages/Lagrange";
 import DividedDifference from "./pages/DividedDifference";
 import MathCursor from "./components/effects/MathCursor";
+import Footer from "./components/layout/Footer";
 
 function App() {
   return (
@@ -45,6 +46,8 @@ function App() {
         />
 
       </Routes>
+
+      <Footer />
     </BrowserRouter>
   );
 }

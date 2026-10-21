@@ -1,7 +1,28 @@
+import { Link, useLocation, useNavigate } from "react-router-dom";
+
 function Footer() {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  // Footer renders on every page, so section links must route home first
+  // when we're not already on it (same behavior as the navbar).
+  const goToHomeSection = (section: string) => {
+    if (location.pathname === "/") {
+      document.getElementById(section)?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+      return;
+    }
+
+    navigate(`/?scrollTo=${section}`);
+  };
+
+  const sectionLinkClass =
+    "text-left text-sm text-slate-500 transition hover:text-cyan-400";
+
   return (
     <footer
-      id="about"
       className="border-t border-white/10 bg-slate-950 px-6 py-12"
     >
       <div className="mx-auto max-w-7xl">
@@ -35,26 +56,29 @@ function Footer() {
               </h4>
 
               <div className="mt-4 flex flex-col gap-3">
-                <a
-                  href="#home"
-                  className="text-sm text-slate-500 transition hover:text-cyan-400"
+                <button
+                  type="button"
+                  onClick={() => goToHomeSection("home")}
+                  className={sectionLinkClass}
                 >
                   Home
-                </a>
+                </button>
 
-                <a
-                  href="#methods"
-                  className="text-sm text-slate-500 transition hover:text-cyan-400"
+                <button
+                  type="button"
+                  onClick={() => goToHomeSection("methods")}
+                  className={sectionLinkClass}
                 >
                   Methods
-                </a>
+                </button>
 
-                <a
-                  href="#how-it-works"
-                  className="text-sm text-slate-500 transition hover:text-cyan-400"
+                <button
+                  type="button"
+                  onClick={() => goToHomeSection("how-it-works")}
+                  className={sectionLinkClass}
                 >
                   How It Works
-                </a>
+                </button>
               </div>
             </div>
 
@@ -64,17 +88,26 @@ function Footer() {
               </h4>
 
               <div className="mt-4 flex flex-col gap-3">
-                <span className="text-sm text-slate-500">
+                <Link
+                  to="/methods/bisection"
+                  className="text-sm text-slate-500 transition hover:text-cyan-400"
+                >
                   Bisection
-                </span>
+                </Link>
 
-                <span className="text-sm text-slate-500">
+                <Link
+                  to="/methods/secant"
+                  className="text-sm text-slate-500 transition hover:text-cyan-400"
+                >
                   Secant
-                </span>
+                </Link>
 
-                <span className="text-sm text-slate-500">
+                <Link
+                  to="/methods/newton"
+                  className="text-sm text-slate-500 transition hover:text-cyan-400"
+                >
                   Newton-Raphson
-                </span>
+                </Link>
               </div>
             </div>
 
@@ -84,17 +117,27 @@ function Footer() {
               </h4>
 
               <div className="mt-4 flex flex-col gap-3">
-                <span className="text-sm text-slate-500">
+                <Link
+                  to="/methods/lagrange"
+                  className="text-sm text-slate-500 transition hover:text-cyan-400"
+                >
                   Lagrange
-                </span>
+                </Link>
 
-                <span className="text-sm text-slate-500">
+                <Link
+                  to="/methods/divided-difference"
+                  className="text-sm text-slate-500 transition hover:text-cyan-400"
+                >
                   Divided Differences
-                </span>
+                </Link>
 
-                <span className="text-sm text-slate-500">
+                <button
+                  type="button"
+                  onClick={() => goToHomeSection("about")}
+                  className={sectionLinkClass}
+                >
                   About NUMERIX
-                </span>
+                </button>
               </div>
             </div>
 

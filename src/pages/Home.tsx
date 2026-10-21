@@ -2,10 +2,10 @@ import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
 import Navbar from "../components/layout/Navbar";
-import Footer from "../components/layout/Footer";
 import Hero from "../components/home/Hero";
 import MethodPreview from "../components/home/MethodPreview";
 import HowItWorks from "../components/home/HowItWorks";
+import About from "../components/home/About";
 
 function Home() {
   const location = useLocation();
@@ -45,7 +45,7 @@ function Home() {
 
         <HowItWorks />
 
-        <Footer />
+        <About />
       </main>
     </>
   );
