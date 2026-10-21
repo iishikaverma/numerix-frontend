@@ -11,28 +11,23 @@ function Home() {
   const location = useLocation();
 
   useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    const section = params.get("scrollTo");
-
-    if (!section) {
+    if (!location.hash) {
       return;
     }
 
-    const scrollToSection = () => {
-      const element = document.getElementById(section);
+    const id = location.hash.slice(1);
 
-      if (element) {
-        element.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
-      }
+    const scrollToSection = () => {
+      document.getElementById(id)?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
     };
 
     const timer = window.setTimeout(scrollToSection, 100);
 
     return () => window.clearTimeout(timer);
-  }, [location.search]);
+  }, [location.hash]);
 
   return (
     <>

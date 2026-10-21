@@ -1,21 +1,12 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Footer() {
-  const location = useLocation();
   const navigate = useNavigate();
 
-  // Footer renders on every page, so section links must route home first
-  // when we're not already on it (same behavior as the navbar).
+  // Footer renders on every page; navigate to the home hash and let Home
+  // handle the smooth scroll (same behavior as the navbar).
   const goToHomeSection = (section: string) => {
-    if (location.pathname === "/") {
-      document.getElementById(section)?.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-      return;
-    }
-
-    navigate(`/?scrollTo=${section}`);
+    navigate(`/#${section}`);
   };
 
   const sectionLinkClass =

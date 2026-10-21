@@ -1,10 +1,9 @@
 import { useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const location = useLocation();
   const navigate = useNavigate();
 
   const closeMenu = () => {
@@ -13,21 +12,7 @@ function Navbar() {
 
   const goToHomeSection = (section: string) => {
     closeMenu();
-
-    if (location.pathname === "/") {
-      const element = document.getElementById(section);
-
-      if (element) {
-        element.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
-      }
-
-      return;
-    }
-
-    navigate(`/?scrollTo=${section}`);
+    navigate(`/#${section}`);
   };
 
   const navLinkClass =
