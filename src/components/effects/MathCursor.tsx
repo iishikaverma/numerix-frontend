@@ -38,6 +38,20 @@ function MathCursor() {
     if (!container) return;
 
     const handleMouseMove = (event: MouseEvent) => {
+      // Only emit over empty background — skip cards, text, and interactive
+      // elements. The overlay is pointer-events-none, so event.target is the
+      // real element under the cursor.
+      const target = event.target as HTMLElement | null;
+
+      if (
+        target &&
+        target.closest(
+          'a, button, input, textarea, select, label, h1, h2, h3, h4, h5, h6, p, [class*="rounded"]'
+        )
+      ) {
+        return;
+      }
+
       const now = performance.now();
 
       const dx = event.clientX - mouse.current.lastX;
